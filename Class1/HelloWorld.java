@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class HelloWorld {
 	public static void runHello (String args[]) throws FileNotFoundException {
-		File file = new File("hello_unicode.txt");
+		File file = new File("Class1/Ressource/hello_unicode.txt");
 		Scanner sc = new Scanner(file);
 		while (sc.hasNextLine())
 			System.out.println(sc.nextLine());
