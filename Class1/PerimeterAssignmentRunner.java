@@ -150,8 +150,8 @@ public class PerimeterAssignmentRunner {
 
     public static void runPerimeterAssignmentRunner (String[] args) {
         PerimeterAssignmentRunner pr = new PerimeterAssignmentRunner();
-        pr.testPerimeter();
-        pr.testPerimeterMultipleFiles();
+        //pr.testPerimeter();
+        //pr.testPerimeterMultipleFiles();
         pr.testFileWithLargestPerimeter();
     }
 }
