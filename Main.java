@@ -6,6 +6,7 @@ import static Class2.StringsFirstAssignments.Part3.runStringFirstAssignmentPart3
 import static Class2.StringsFirstAssignments.Part4.runStringFirstAssignmentPart4;
 import static Class2.StringsSecondAssignments.Part1.runStringSecondAssignmentPart1;
 import static Class2.StringsSecondAssignments.Part2.runStringSecondAssignmentPart2;
+import static Class2.StringsSecondAssignments.Part3.runStringSecondAssignmentPart3;
 
 public class Main {
     public static void main (String[] args) {
@@ -21,7 +22,8 @@ public class Main {
             //runStringFirstAssignmentPart4(new String[0]);
 
             //runStringSecondAssignmentPart1(new String[0]);
-            runStringSecondAssignmentPart2(new String[0]);
+            //runStringSecondAssignmentPart2(new String[0]);
+            runStringSecondAssignmentPart3(new String[0]);
 
         } catch (Exception e) {
             e.printStackTrace();
