@@ -85,7 +85,6 @@ public class Part1 {
         int startIndex = 0;
 
         while (true) {
-
             int indexFound = stringToFindIn.toUpperCase().indexOf(stringToCount, startIndex);
 
             if (indexFound != -1) {
@@ -94,7 +93,6 @@ public class Part1 {
             } else {
                 break;
             }
-
         }
 
         return count;
@@ -111,9 +109,23 @@ public class Part1 {
         return (numberOfC + numberOfG) / (double)dna.length();
     }
 
-    public int countCTG(String dna) {
+    public int countCTG(String gene) {
 
-        return countRecurenceofString("CTG", dna);
+        int count = 0;
+        int startIndex = 0;
+
+        while (true) {
+            int indexFound = gene.toUpperCase().indexOf("CTG", startIndex);
+
+            if (indexFound != -1) {
+                count++;
+                startIndex = indexFound + 1;
+            } else {
+                break;
+            }
+        }
+
+        return count;
     }
 
     public void processGenes(StorageResource sr) {
@@ -172,12 +184,6 @@ public class Part1 {
                 startIndex = dna.indexOf(gene, startIndex) + gene.length();
             } else {
                 break;
-                /*startIndex = dna.indexOf("ATG", startIndex + 3);
-
-                if(startIndex == -1) {
-                    break;
-                }
-                */
             }
 
         }
@@ -271,12 +277,12 @@ public class Part1 {
 
 
         System.out.println("\n*** TEST WITH REAL DNA ***\n**************************\n");
-        FileResource fr = new FileResource("Class2/Ressource/brca1line.fa");
+        FileResource fr = new FileResource("Class2/Ressource/GRch38dnapart.fa");
         String dna = fr.asString();
         printAllGenes(dna);
         processGenes(getAllGenes(dna));
 
-        printAllGenes(dna);
+        System.out.println("Number ctg : " + countCTG(dna));
 
     }
 
