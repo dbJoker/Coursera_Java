@@ -10,6 +10,8 @@ import static Class2.StringsSecondAssignments.Part2.runStringSecondAssignmentPar
 import static Class2.StringsSecondAssignments.Part3.runStringSecondAssignmentPart3;
 import static Class2.StringsThirdAssignments.Part1.runStringsThirdAssignmentsPart1;
 
+import static Class3.ParsingExportData.runParsingExportData;
+
 public class Main {
     public static void main (String[] args) {
         try {
@@ -31,10 +33,11 @@ public class Main {
 
             //runDebuffing(new String[0]);
 
-            runStringsThirdAssignmentsPart1(new String[0]);
-
+            //runStringsThirdAssignmentsPart1(new String[0]);
 
             //*****Class3*****
+            runParsingExportData(new String[0]);
+
 
         } catch (Exception e) {
             e.printStackTrace();
