@@ -11,6 +11,7 @@ import static Class2.StringsSecondAssignments.Part3.runStringSecondAssignmentPar
 import static Class2.StringsThirdAssignments.Part1.runStringsThirdAssignmentsPart1;
 
 import static Class3.ParsingExportData.runParsingExportData;
+import static Class3.ParsingWeatherData.runParsingWeatherData;
 
 public class Main {
     public static void main (String[] args) {
@@ -36,7 +37,8 @@ public class Main {
             //runStringsThirdAssignmentsPart1(new String[0]);
 
             //*****Class3*****
-            runParsingExportData(new String[0]);
+            //runParsingExportData(new String[0]);
+            runParsingWeatherData(new String[0]);
 
 
         } catch (Exception e) {
