@@ -11,12 +11,12 @@ public class ParsingBirthNameData {
     public static void runParsingBirthNameData (String[] args) {
 
         Class4.ParsingBirthNameData run = new Class4.ParsingBirthNameData();
-        //run.testTotalBirths();
-        //run.testGetRank();
-        //run.testGetName();
-        //run.testWhatIsNameInYear();
-        //run.testYearOfHighestRank();
-        //run.testGetAverageRank();
+        run.testTotalBirths();
+        run.testGetRank();
+        run.testGetName();
+        run.testWhatIsNameInYear();
+        run.testYearOfHighestRank();
+        run.testGetAverageRank();
         run.testGetTotalBirthsRankedHigher();
 
     }
@@ -110,7 +110,7 @@ public class ParsingBirthNameData {
             int index2 = file.getName().indexOf("2");
             int index = -1;
 
-            if (index1 != -1 && index1 < index2) {
+            if (index1 != -1 && (index1 < index2 || index2 == -1)) {
                 index = index1;
             } else if (index2 != -1) {
                 index = index2;
@@ -121,7 +121,7 @@ public class ParsingBirthNameData {
             }
             rank = getRank(year, name, gender);
 
-            if (rank < highestRank || (highestRank == -1) && rank != -1) {
+            if ((rank < highestRank && rank != -1) || (highestRank == -1 && rank != -1)) {
                 highestRank = rank;
                 highestRankYear = year;
             }
@@ -147,7 +147,7 @@ public class ParsingBirthNameData {
             int index2 = file.getName().indexOf("2");
             int index = -1;
 
-            if (index1 != -1 && index1 < index2) {
+            if (index1 != -1 && (index1 < index2 || index2 == -1)) {
                 index = index1;
             } else if (index2 != -1) {
                 index = index2;
@@ -202,6 +202,9 @@ public class ParsingBirthNameData {
         System.out.println("Expected : -1, Result : " + rank);
         rank = getRank(2014, "Isabella", "F");
         System.out.println("Expected : 4, Result : " + rank);
+        rank = getRank(1971, "Frank", "M");
+        System.out.println("Expected : 54, Result : " + rank);
+
     }
 
     public void testGetName () {
@@ -211,11 +214,15 @@ public class ParsingBirthNameData {
         System.out.println("Expected : NO NAME, Result : " + name);
         name = getName(2014, 3, "F");
         System.out.println("Expected : Sophia, Result : " + name);
+        name = getName(1982, 450, "M");
+        System.out.println("Expected : Forrest, Result : " + name);
     }
 
     public void testWhatIsNameInYear () {
         String name = whatIsNameInYear("Isabella", 2012, 2014, "F");
         System.out.println("Expected : Sophia, Result : " + name);
+        name = whatIsNameInYear("Owen", 1974, 2014, "M");
+        System.out.println("Expected : Leonel, Result : " + name);
     }
 
     public void testYearOfHighestRank () {
@@ -225,6 +232,9 @@ public class ParsingBirthNameData {
 
         year = yearOfHighestRank("Ornito", "M");
         System.out.println("Expected : -1, Result : " + year);
+
+        year = yearOfHighestRank("Mich", "M");
+        System.out.println("Expected : year 1960, Result : " + year);
     }
 
     public void testGetAverageRank () {
@@ -237,12 +247,18 @@ public class ParsingBirthNameData {
 
         averageRank = getAverageRank("Ornito", "M");
         System.out.println("Expected : -1.0, Result : " + averageRank);
+
+        averageRank = getAverageRank("Robert", "M");
+        System.out.println("Expected : 10.76, Result : " + averageRank);
     }
 
     public void testGetTotalBirthsRankedHigher () {
         int totalBirth = 0;
         totalBirth = getTotalBirthsRankedHigher(2012, "Ethan", "M");
         System.out.println("Expected : 15, Result : " + totalBirth);
+
+        totalBirth = getTotalBirthsRankedHigher(1990, "Drew", "M");
+        System.out.println("Expected : 1498074, Result : " + totalBirth);
     }
 
 }
