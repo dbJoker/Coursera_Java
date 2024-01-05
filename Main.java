@@ -13,6 +13,7 @@ import static Class2.StringsThirdAssignments.Part1.runStringsThirdAssignmentsPar
 import static Class3.ParsingExportData.runParsingExportData;
 import static Class3.ParsingWeatherData.runParsingWeatherData;
 import static Class4.ParsingBirthNameData.runParsingBirthNameData;
+import static ClassAdditionel.GrayScaleConverter.runGrayScaleConverter;
 
 public class Main {
     public static void main (String[] args) {
@@ -40,7 +41,8 @@ public class Main {
             //*****Class3*****
             //runParsingExportData(new String[0]);
             //runParsingWeatherData(new String[0]);
-            runParsingBirthNameData(new String[0]);
+            //runParsingBirthNameData(new String[0]);
+            runGrayScaleConverter(new String[0]);
 
 
         } catch (Exception e) {
