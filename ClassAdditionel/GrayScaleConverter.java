@@ -13,7 +13,8 @@ public class GrayScaleConverter {
 
 		ClassAdditionel.GrayScaleConverter run = new ClassAdditionel.GrayScaleConverter();
 		//run.testGray();
-		run.doBatchGrey();
+		//run.doBatchGrey();
+		run.doBatchInversion();
 
 	}
 
@@ -36,7 +37,23 @@ public class GrayScaleConverter {
 			//set pixel's blue to average
 			pixel.setBlue(average);
 		}
-		//outImage is your answer
+
+		return outImage;
+	}
+
+	public ImageResource makeInversion(ImageResource inImage) {
+		//A blank image of the same size
+		ImageResource outImage = new ImageResource(inImage.getWidth(), inImage.getHeight());
+		//for each pixel in outImage
+		for (Pixel pixel: outImage.pixels()) {
+			//look at the corresponding pixel in inImage
+			Pixel inPixel = inImage.getPixel(pixel.getX(), pixel.getY());
+			//invert the value of all pixels
+			pixel.setRed(255 - inPixel.getRed());
+			pixel.setGreen(255 - inPixel.getGreen());
+			pixel.setBlue(255 - inPixel.getBlue());
+		}
+
 		return outImage;
 	}
 
@@ -46,13 +63,23 @@ public class GrayScaleConverter {
 			ImageResource inImage = new ImageResource(f);
 			ImageResource gray = makeGray(inImage);
 			gray.draw();
-			doSave(inImage, gray);
+			doSave(inImage, gray, "gray-");
 		}
 	}
 
-	public void doSave(ImageResource originalImage, ImageResource newImage) {
+	public void doBatchInversion() {
+		DirectoryResource dr = new DirectoryResource();
+		for (File f: dr.selectedFiles()) {
+			ImageResource inImage = new ImageResource(f);
+			ImageResource inverted = makeInversion(inImage);
+			inverted.draw();
+			doSave(inImage, inverted, "inverted-");
+		}
+	}
+
+	public void doSave(ImageResource originalImage, ImageResource newImage, String typeSuffix) {
 		String fname = originalImage.getFileName();
-		String newName = "gray-" + fname;
+		String newName = typeSuffix + fname;
 		newImage.setFileName(newName);
 		newImage.save();
 
